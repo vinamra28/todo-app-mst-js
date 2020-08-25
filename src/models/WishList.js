@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree";
+import { types, getParent, destroy } from "mobx-state-tree";
 
 const data = {
   name: "vinamra",
@@ -39,6 +39,13 @@ export const WishListItem = types
     changeImage(newImage) {
       self.image = newImage;
     },
+    remove() {
+      // since it's a tree
+      //2 here means we want to go 2 parents up
+      getParent(self, 2).remove(self);
+      //above can also be written as
+      // getParent(getParent(self)).remove(self);
+    },
   }));
 
 export const WishList = types
@@ -49,6 +56,12 @@ export const WishList = types
   .actions((self) => ({
     add(item) {
       self.items.push(item);
+    },
+    remove(item) {
+      //MST in built feature as in MST every element has unique location
+      destroy(item);
+      // normal method is :
+      //self.items.splice(self.items.indexOf(item), 1);
     },
   }))
   .views((self) => ({
