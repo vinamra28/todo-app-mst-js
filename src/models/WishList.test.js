@@ -31,6 +31,34 @@ it("can create an wishlist", () => {
   expect(list.items.length).toBe(2);
 });
 
+
+it("can create an instance of a model", () => {
+  const item = WishListItem.create({
+    name: "Ishani",
+    price: 89.96,
+  });
+ 
+  item.changeName("Tyagi");
+  expect(item.name).toBe("Tyagi");
+});
+
+//testing the WishList
+it("can create an wishlist", () => {
+  const list = WishList.create({
+    items: [
+      {
+        name: "Ishani",
+        price: 89.96,
+      },
+      {
+        name: "Ishu",
+        price: 89.96,
+      },
+    ],
+  });
+  expect(list.items.length).toBe(2);
+});
+
 /*
  * without using Snapshot from MST
  */
