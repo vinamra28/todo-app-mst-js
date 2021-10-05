@@ -65,3 +65,22 @@ Array [
   },
 ]
 `;
+
+exports[`can add new item using onPatch 2`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/items/0",
+    "value": Object {
+      "image": "",
+      "name": "foo",
+      "price": 28.78,
+    },
+  },
+  Object {
+    "op": "replace",
+    "path": "/items/0/name",
+    "value": "bar",
+  },
+]
+`;
