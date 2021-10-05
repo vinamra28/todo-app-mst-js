@@ -37,7 +37,7 @@ it("can create an instance of a model", () => {
     name: "Ishani",
     price: 89.96,
   });
- 
+
   item.changeName("Tyagi");
   expect(item.name).toBe("Tyagi");
 });
@@ -184,4 +184,24 @@ it("can calculate total price of a wishlist", () => {
   //Only if the price is changed then the value of 'changed' will increase to 1
   list.items[0].changePrice(10);
   expect(changed).toBe(1);
+});
+
+
+it("can add new item using onPatch", () => {
+  const list = WishList.create();
+  const patches = [];
+  //to record snapshots
+  onPatch(list, (patch) => {
+    patches.push(patch);
+  });
+  list.add({
+    name: "foo",
+    price: 28.78,
+  });
+
+  list.items[0].changeName("bar");
+
+  // to MatchSnapshot creates a snapshot in the current dir
+  //obtain immutable snapshots of the state using getSnapshot
+  expect(patches).toMatchSnapshot();
 });
