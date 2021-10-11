@@ -186,6 +186,41 @@ it("can calculate total price of a wishlist", () => {
   expect(changed).toBe(1);
 });
 
+it("can calculate total price of a wishlist with modified items", () => {
+  const list = WishList.create({
+    items: [
+      {
+        name: "agrawal",
+        price: 25,
+        image: "",
+      },
+      {
+        name: "gupta",
+        price: 76,
+        image: "",
+      },
+      {
+        name: "bread",
+        price: 22,
+        image: "",
+      },
+    ],
+  });
+  expect(list.totalPrice).toBe(123);
+  let changed = 0;
+  reaction(
+    () => list.totalPrice,
+    () => changed++
+  );
+  expect(changed).toBe(0);
+  console.log(list.totalPrice);
+  list.items[0].changeName("Test");
+  expect(changed).toBe(0);
+  //Only if the price is changed then the value of 'changed' will increase to 1
+  list.items[0].changePrice(10);
+  expect(changed).toBe(1);
+});
+
 
 it("can add new item using onPatch", () => {
   const list = WishList.create();
@@ -197,6 +232,25 @@ it("can add new item using onPatch", () => {
   list.add({
     name: "foo",
     price: 28.78,
+  });
+
+  list.items[0].changeName("bar");
+
+  // to MatchSnapshot creates a snapshot in the current dir
+  //obtain immutable snapshots of the state using getSnapshot
+  expect(patches).toMatchSnapshot();
+});
+
+it("can add new item using onPatch with modified wishlist parameters", () => {
+  const list = WishList.create();
+  const patches = [];
+  //to record snapshots
+  onPatch(list, (patch) => {
+    patches.push(patch);
+  });
+  list.add({
+    name: "king",
+    price: 25,
   });
 
   list.items[0].changeName("bar");
