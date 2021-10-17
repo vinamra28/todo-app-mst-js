@@ -10,6 +10,11 @@ const WishListView = ({ wishList }) => (
         <WishListItemView key={idx} item={item} />
       ))}
     </ul>
+    <ul>
+      {wishList.items.map((item, idx) => (
+        <WishListItemView key={idx} item={item} />
+      ))}
+    </ul>
     Total: {wishList.totalPrice}
   </div>
 );

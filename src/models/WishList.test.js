@@ -31,6 +31,22 @@ it("can create an wishlist", () => {
   expect(list.items.length).toBe(2);
 });
 
+//testing the WishList
+it("can create an wishlist new", () => {
+  const list = WishList.create({
+    items: [
+      {
+        name: "aradhya",
+        price: 28.78,
+      },
+      {
+        name: "aj",
+        price: 28.78,
+      },
+    ],
+  });
+  expect(list.items.length).toBe(2);
+});
 
 it("can create an instance of a model", () => {
   const item = WishListItem.create({
