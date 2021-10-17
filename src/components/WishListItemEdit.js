@@ -8,6 +8,8 @@ class WishListItemEdit extends Component {
       <div className="item-edit">
         Thing: <input value={item.name} onChange={this.onNameChange} />
         <br />
+        Thing: <input value={item.name} onChange={this.onNameChange} />
+        <br />
         Price: <input value={item.price} onChange={this.onPriceChange} />
         <br />
         Image: <input value={item.image} onChange={this.onImageChange} />

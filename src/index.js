@@ -19,6 +19,12 @@ const wishList = WishList.create({
       image:
         "https://images-na.ssl-images-amazon.com/images/I/51a7xaMpneL._SX329_BO1,204,203,200_.jpg",
     },
+    {
+      name: "Miracles - C.S. Lewis 22",
+      price: 22,
+      image:
+        "https://images-na.ssl-images-amazon.com/images/I/51a7xaMpneL._SX329_BO1,204,203,200_.jpg",
+    },
   ],
 });
 

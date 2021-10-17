@@ -39,6 +39,8 @@ class WishListItemView extends Component {
         <WishListItemEdit item={this.state.clone} />
         <button onClick={this.onSaveEdit}>💾</button>
         <button onClick={this.onCancelEdit}>✖️</button>
+        <button onClick={this.onSaveEdit}>💾</button>
+        <button onClick={this.onCancelEdit}>✖️</button>
       </li>
     );
   }

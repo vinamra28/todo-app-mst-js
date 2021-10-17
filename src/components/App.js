@@ -8,6 +8,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">WishList</h1>
+          <h1 className="App-title">WishList</h1>
         </header>
         <WishListView wishList={this.props.wishList} />
       </div>
